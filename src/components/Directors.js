@@ -1,29 +1,27 @@
 import React from "react";
-import { directors } from "../data";
 
-function Directors() {
-  const director = directors.map((oneDirector) => {
+function Directors( { directors } ) {
+
+  const directorsDisplayed = directors.map(({ name, movies }, index) => {
     return (
-      <div>
-        <h2>Name: {oneDirector.name}</h2>
-        <p>Movies:</p>
+      <div key={index}>
+        <div>{name}</div>
         <ul>
-          {oneDirector.movies.map((movie, index) => {
+          {movies.map((m, index) => {
             return (
-              <li key={index}>
-                {movie}
-              </li>
+              <li key={index}>{m}</li>   
             )
           })}
         </ul>
       </div>
-    )
+
+    );
   })
-  
+
   return (
     <div>
       <h1>Directors Page</h1>
-      { director}
+      {directorsDisplayed}
     </div>
   );
 }
